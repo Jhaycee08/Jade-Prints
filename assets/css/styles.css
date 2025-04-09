@@ -1,0 +1,166 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../image/shopping-bag-cart.jpg'); /* Path to your background image */
+    background-size: cover; /* Ensures the image covers the entire body */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Keeps the background fixed during scrolling */
+}
+
+header {
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+nav {
+    padding: 10px;
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Vertically center items */
+    justify-content: space-between; /* Space between logo and nav items */
+    flex-wrap: wrap; /* Allow items to wrap if necessary */
+}
+
+nav .logo {
+    height: 100px; /* Increase the height of the logo */
+    width: auto; /* Maintain the aspect ratio */
+    margin-right: 20px; /* Add spacing between the logo and the nav items */
+    flex-shrink: 0; /* Prevent the logo from shrinking in the flex container */
+}
+
+nav ul {
+    list-style-type: none; /* Hides the bullets */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Aligns items horizontally */
+    justify-content: center; /* Centers the navigation items */
+    flex-grow: 1; /* Pushes the nav items to take up remaining space */
+}
+
+nav ul li {
+    margin: 0 15px; /* Adds spacing between items */
+}
+
+nav ul li a {
+    text-decoration: none; /* Removes underline from links */
+    color: white; /* Sets link color */
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: pink; /* Changes color on hover */
+}
+
+.product-list {
+    display: grid; /* Use CSS Grid for layout */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Add spacing between grid items */
+    padding: 20px; /* Add padding around the grid */
+}
+
+.product-item {
+    background-color: white; /* Optional: Add a background color */
+    border: 1px solid #ddd; /* Optional: Add a border */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    padding: 15px; /* Add padding inside each product item */
+    text-align: center; /* Center-align the content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visuals */
+}
+
+.product-item img {
+    max-width: 100%; /* Ensure images do not exceed the container width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Add spacing below the image */
+}
+
+.product {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    max-width: 100px;
+}
+
+.product h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: white;
+}
+
+.product p {
+    color: white;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9em; /* Optional: Adjust font size for better readability */
+}
+
+.social-icon {
+    color: #4267B2; /* Facebook blue */
+    font-size: 10px; /* Adjust size as needed */
+    margin: 0 10px; /* Add spacing if needed */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s;
+}
+
+social-icon:hover {
+    color: #365899; /* Darker blue on hover */
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Add spacing between form elements */
+    max-width: 400px; /* Limit the form width */
+    margin: 0 auto; /* Center the form */
+}
+
+.contact-form label {
+    font-weight: bold;
+}
+
+.contact-form input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.contact-form button {
+    padding: 10px 15px;
+    background-color: #4267B2; /* Facebook blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #365899; /* Darker blue on hover */
+}
