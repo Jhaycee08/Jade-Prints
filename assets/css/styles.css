@@ -7,6 +7,7 @@ body {
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
     background-attachment: fixed; /* Keeps the background fixed during scrolling */
+    color: white
 }
 
 header {
@@ -161,6 +162,201 @@ social-icon:hover {
     transition: background-color 0.3s;
 }
 
-.contact-form button:hover {
+contact-form button:hover {
     background-color: #365899; /* Darker blue on hover */
+}
+
+.add-to-cart {
+    background-color: #f0f0f0; /* Default background color */
+    color: #000; /* Default text color */
+    border: 1px solid #ccc; /* Default border */
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.add-to-cart:hover {
+    background-color: pink; /* Change background to pink on hover */
+    color: white; /* Optional: Change text color to white */
+}
+
+#cart-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between grid items */
+    padding: 20px; /* Add padding around the grid */
+}
+
+.cart-item {
+    border: 1px solid #ddd; /* Add a border around each item */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Add padding inside each item */
+    text-align: center; /* Center-align the content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visuals */
+}
+
+.cart-item img {
+    max-width: 100%; /* Ensure images fit within the container */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Add spacing below the image */
+}
+
+.cart-item h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.cart-item p {
+    margin: 5px 0;
+}
+
+.cart-item button {
+    margin: 5px; /* Add spacing between buttons */
+    padding: 8px 12px;
+    background-color: #4267B2; /* Button background color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cart-item button:hover {
+    background-color: #365899; /* Darker button color on hover */
+}
+
+#checkout-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between grid items */
+    padding: 20px; /* Add padding around the grid */
+}
+
+.checkout-item {
+    border: 1px solid #ddd; /* Add a border around each item */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Add padding inside each item */
+    text-align: center; /* Center-align the content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visuals */
+}
+
+.checkout-item img {
+    max-width: 100%; /* Ensure images fit within the container */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Add spacing below the image */
+}
+
+.checkout-item h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.checkout-item p {
+    margin: 5px 0;
+}
+
+#cancel-container #cancel-button {
+    background-color: #f0f0f0; /* Default background color */
+    color: #000; /* Default text color */
+    border: 1px solid #ccc; /* Default border */
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+#cancel-container #cancel-button:hover {
+    background-color: pink; /* Change background to pink on hover */
+    color: white; /* Optional: Change text color to white */
+}
+
+#checkout-container #checkout-button {
+    background-color: #f0f0f0; /* Default background color */
+    color: #000; /* Default text color */
+    border: 1px solid #ccc; /* Default border */
+    padding: 10px 20px; /* Button padding */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+#checkout-container #checkout-button:hover {
+    background-color: pink; /* Change background to pink on hover */
+    color: white; /* Optional: Change text color to white */
+}
+
+#user-info-form {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 500px; /* Limit the form width */
+    background-color: #f9f9f9; /* Light background for the form */
+    border: 1px solid #ddd; /* Add a border around the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visuals */
+}
+
+#user-info-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333; /* Darker text color */
+}
+
+#checkout-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555; /* Slightly darker text for labels */
+}
+
+#checkout-form input,
+#checkout-form textarea {
+    width: 100%; /* Full width for inputs and textarea */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in width */
+    font-size: 1em;
+    background-color: #fff; /* White background */
+}
+
+#checkout-form input:focus,
+#checkout-form textarea:focus {
+    border-color: #4267B2; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(66, 103, 178, 0.5); /* Add a subtle glow */
+}
+
+#checkout-form button {
+    width: 100%; /* Full width for the button */
+    padding: 10px;
+    background-color: #4267B2; /* Button background color */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+#checkout-form button:hover {
+    background-color: #365899; /* Darker blue on hover */
+}
+
+#cancel-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#cancel-container #cancel-button {
+    background-color: #f0f0f0; /* Default background color */
+    color: #000; /* Default text color */
+    border: 1px solid #ccc; /* Default border */
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+#cancel-container #cancel-button:hover {
+    background-color: pink; /* Change background to pink on hover */
+    color: white; /* Optional: Change text color to white */
 }

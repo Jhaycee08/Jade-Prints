@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <header>
+            <nav>
+                <img src="assets/image/jade prints.PNG" alt="Jade Prints Logo" class="logo">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </nav>
+        
+        <h1>Your Cart</h1>
+    </header>
+    <main>
+        <div id="cart-items"></div>
+        <div id="checkout-container">
+            <button id="checkout-button">Proceed to Checkout</button>
+        </div>
+        <div id="checkout-items"></div>
+        <div id="total-amount"></div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Jade Prints. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Retrieve cart items from localStorage
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartItemsContainer = document.getElementById("cart-items");
+        const checkoutButton = document.getElementById("checkout-button");
+
+        function renderCart() {
+            cartItemsContainer.innerHTML = ""; // Clear the container
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+                document.getElementById("checkout-container").style.display = "none"; // Hide checkout button
+            } else {
+                document.getElementById("checkout-container").style.display = "block"; // Show checkout button
+                cart.forEach((item, index) => {
+                    const itemElement = document.createElement("div");
+                    itemElement.classList.add("cart-item");
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto;">
+                        <h3>${item.name}</h3>
+                        <p>${item.price}</p>
+                        <p>Quantity: 
+                            <button class="decrease-button" data-index="${index}">-</button>
+                            <span class="quantity-display">${item.quantity}</span>
+                            <button class="increase-button" data-index="${index}">+</button>
+                        </p>
+                        <button class="delete-button" data-index="${index}">Delete</button>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                });
+
+                // Add event listeners for increase, decrease, and delete buttons
+                document.querySelectorAll(".increase-button").forEach(button => {
+                    button.addEventListener("click", increaseQuantity);
+                });
+
+                document.querySelectorAll(".decrease-button").forEach(button => {
+                    button.addEventListener("click", decreaseQuantity);
+                });
+
+                document.querySelectorAll(".delete-button").forEach(button => {
+                    button.addEventListener("click", deleteItem);
+                });
+            }
+        }
+
+        function increaseQuantity(event) {
+            const index = event.target.getAttribute("data-index");
+            cart[index].quantity += 1; // Increase the quantity
+            localStorage.setItem("cart", JSON.stringify(cart)); // Save updated cart
+            renderCart(); // Re-render the cart
+        }
+
+        function decreaseQuantity(event) {
+            const index = event.target.getAttribute("data-index");
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1; // Decrease the quantity
+                localStorage.setItem("cart", JSON.stringify(cart)); // Save updated cart
+                renderCart(); // Re-render the cart
+            } else {
+                alert("Quantity must be at least 1.");
+            }
+        }
+
+        function deleteItem(event) {
+            const index = event.target.getAttribute("data-index");
+            cart.splice(index, 1); // Remove the item from the cart
+            localStorage.setItem("cart", JSON.stringify(cart)); // Save updated cart
+            renderCart(); // Re-render the cart
+        }
+
+        // Add event listener for the checkout button
+        checkoutButton.addEventListener("click", () => {
+            localStorage.setItem("checkout", JSON.stringify(cart)); // Save cart items for checkout
+            window.location.href = "checkout.html"; // Redirect to checkout page
+        });
+
+        // Initial render
+        renderCart();
+    </script>
+
+</body>
+</html>

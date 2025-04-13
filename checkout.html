@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <header>
+            <nav>
+                <img src="assets/image/jade prints.PNG" alt="Jade Prints Logo" class="logo">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </nav>
+    </header>
+    <main>
+        <div id="checkout-items"></div>
+        <div id="total-amount"></div>
+        <div id="user-info-form">
+            <h2>Billing Information</h2>
+            <form id="checkout-form">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+                <label for="address">Shipping Address:</label>
+                <textarea id="address" name="address" placeholder="Enter your shipping address" rows="3" required></textarea>
+
+                <label for="contact">Contact Number:</label>
+                <input type="tel" id="contact" name="contact" placeholder="Enter your contact number" required>
+
+                <button type="submit" id="submit-button">Submit Order</button>
+            </form>
+        </div>
+        <div id="cancel-container">
+            <button id="cancel-button">Cancel</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Jade Prints. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Retrieve checkout items from localStorage
+        const checkoutItems = JSON.parse(localStorage.getItem("checkout")) || [];
+        const checkoutItemsContainer = document.getElementById("checkout-items");
+        const totalAmountContainer = document.getElementById("total-amount");
+        const cancelButton = document.getElementById("cancel-button");
+
+        function renderCheckout() {
+            checkoutItemsContainer.innerHTML = ""; // Clear the container
+            let totalAmount = 0;
+
+            if (checkoutItems.length === 0) {
+                checkoutItemsContainer.innerHTML = "<p>No items to checkout.</p>";
+            } else {
+                checkoutItems.forEach(item => {
+                    const itemElement = document.createElement("div");
+                    itemElement.classList.add("checkout-item");
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto;">
+                        <h3>${item.name}</h3>
+                        <p>${item.price}</p>
+                        <p>Quantity: ${item.quantity}</p>
+                    `;
+                    checkoutItemsContainer.appendChild(itemElement);
+
+                    // Parse the price and calculate the total amount
+                    const price = parseFloat(item.price.replace(/[^0-9.]/g, "")); // Remove non-numeric characters
+                    totalAmount += price * item.quantity;
+                });
+
+                // Display total amount
+                totalAmountContainer.innerHTML = `<h3>Total Amount: PHP ${totalAmount.toFixed(2)}</h3>`;
+            }
+        }
+
+        // Add event listener for the cancel button
+        cancelButton.addEventListener("click", () => {
+            localStorage.removeItem("checkout"); // Clear the checkout data
+            window.location.href = "cart.html"; // Redirect back to cart.html
+        });
+
+        // Initial render
+        renderCheckout();
+    </script>
+    <script>
+        const checkoutForm = document.getElementById("checkout-form");
+
+        checkoutForm.addEventListener("submit", (event) => {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Collect form data
+            const userInfo = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                address: document.getElementById("address").value,
+                contact: document.getElementById("contact").value,
+            };
+
+            // Save user information to localStorage (or send to the server)
+            localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+            // Display a confirmation message
+            alert("Order submitted successfully! Thank you for your purchase.");
+
+            // Redirect to a success page or clear the form
+            window.location.href = "success.html"; // Replace with your success page
+        });
+    </script>
+</body>
+</html>
