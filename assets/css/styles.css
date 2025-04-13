@@ -102,11 +102,11 @@ nav ul li a:hover {
 .product h2 {
     font-size: 1.2em;
     margin: 10px 0;
-    color: white;
+    color: black;
 }
 
 .product p {
-    color: white;
+    color: black;
 }
 
 footer {
